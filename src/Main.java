@@ -1,4 +1,6 @@
+import br.com.ada.itau950.locadora.entidades.Locacao;
 import br.com.ada.itau950.locadora.entidades.Veiculo;
+import br.com.ada.itau950.locadora.service.LocacaoService;
 import br.com.ada.itau950.locadora.service.VeiculoService;
 
 import java.util.Map;
@@ -16,11 +18,14 @@ public class Main {
 
     private void start() {
 
+        VeiculoService veiculoService = new VeiculoService();
+        LocacaoService locacaoService = new LocacaoService();
+
         System.out.println("Bem vindo - Locadora de Veiculos");
 
         //solicitar dados do cliente PF/PJ, endereco
 
-        Map<String, Veiculo> veiculosMap = new VeiculoService().recuperarVeiculoArquivo();
+        Map<String, Veiculo> veiculosMap = veiculoService.recuperarVeiculoArquivo();
 
         System.out.println("Veiculos disponiveis:");
 
@@ -35,8 +40,12 @@ public class Main {
         System.out.println("Data devoluçao:");
         String dataDevolucao = scanner.next();
 
+        Locacao locacao = new Locacao();
+
         //1 - calcular o valor da locacao
         //2 - pedir para o cliente confirmar, se sim finalizar a locacao
+
+        locacaoService.salvarLocacao(locacao);
 
     }
 

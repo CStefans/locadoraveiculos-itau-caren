@@ -12,6 +12,9 @@ public class Locacao {
     private LocalDateTime dataHoraLocacao;
     private LocalDateTime dataHoraDevolucao;
 
+    public Locacao() {
+    }
+
     public Locacao(Pessoa cliente, Veiculo veiculo, LocalDateTime dataHoraLocacao, LocalDateTime dataHoraDevolucao) {
         this.cliente = cliente;
         this.veiculo = veiculo;
