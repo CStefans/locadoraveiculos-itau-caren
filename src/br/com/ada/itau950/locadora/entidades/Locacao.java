@@ -22,6 +22,10 @@ public class Locacao {
         this.dataHoraDevolucao = dataHoraDevolucao;
     }
 
+    public void setIdLocacao(Long idLocacao) {
+        this.idLocacao = idLocacao;
+    }
+
     public Pessoa getCliente() {
         return cliente;
     }

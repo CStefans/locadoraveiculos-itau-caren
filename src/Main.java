@@ -1,5 +1,6 @@
 import br.com.ada.itau950.locadora.entidades.Locacao;
 import br.com.ada.itau950.locadora.entidades.Veiculo;
+import br.com.ada.itau950.locadora.exceptions.ValidacaoException;
 import br.com.ada.itau950.locadora.service.LocacaoService;
 import br.com.ada.itau950.locadora.service.VeiculoService;
 
@@ -45,7 +46,11 @@ public class Main {
         //1 - calcular o valor da locacao
         //2 - pedir para o cliente confirmar, se sim finalizar a locacao
 
-        locacaoService.salvarLocacao(locacao);
+        try {
+            locacaoService.salvarLocacao(locacao);
+        } catch (ValidacaoException e) {
+            e.printStackTrace();
+        }
 
     }
 
