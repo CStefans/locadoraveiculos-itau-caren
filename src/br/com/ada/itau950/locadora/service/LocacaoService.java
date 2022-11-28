@@ -1,5 +1,6 @@
 package br.com.ada.itau950.locadora.service;
 
+import br.com.ada.itau950.locadora.dto.EmailDto;
 import br.com.ada.itau950.locadora.entidades.Locacao;
 import br.com.ada.itau950.locadora.entidades.PessoaFisica;
 import br.com.ada.itau950.locadora.exceptions.ValidacaoException;
@@ -13,6 +14,7 @@ import java.math.RoundingMode;
 import java.time.temporal.ChronoUnit;
 
 public class LocacaoService {
+    LocacaoRepository locacaoRepository = new LocacaoRepository();
     public void salvarLocacao(Locacao locacao) throws ValidacaoException {
 
         //validacoes (validar cpf, cnpj dataNasc)
@@ -26,16 +28,19 @@ public class LocacaoService {
         }
 
         //salvar no banco de dados
-        LocacaoRepository locacaoRepository = new LocacaoRepository();
         locacao = locacaoRepository.salvarLocacao(locacao);
 
         //enviar um email para o cliente
+        EmailDto emailDto = new EmailDto();
+        emailDto.setNome((locacao.getCliente().getNome()));
+        emailDto.setEmailDestinatario(locacao.getCliente().getEmail());
+        emailDto.setMensagem("Dados da Locacao");
+
 
     }
 
     public Locacao recuperarLocacao(Long idLocacao) {
         //buscar a locacao no banco de dados
-        LocacaoRepository locacaoRepository = new LocacaoRepository();
         return locacaoRepository.recuperarLocacao(idLocacao);
     }
 

@@ -6,6 +6,8 @@ public abstract class Pessoa {
 
     private Endereco endereco;
 
+    private String email;
+
     public String getNome() {
         return nome;
     }
@@ -20,5 +22,13 @@ public abstract class Pessoa {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
